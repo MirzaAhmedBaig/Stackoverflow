@@ -1,0 +1,66 @@
+<html>
+
+<head>
+    <title>Demo for date</title>
+    <script type="text/javascript">
+        function returnMidWednesday(month, year) {
+            var date = new Date(year, month, 1);
+            if (leapYear(year) && month == 1) {
+                if (date.getDay() < 3) {
+                    return returnMidDate(1, date)
+                } else {
+                    return returnMidDate(0, date)
+                }
+            } else {
+                if (leapYear(year)) {
+                    if (date.getDay() < 4) {
+                        return returnMidDate(0, date)
+                    } else {
+                        return returnMidDate(1, date)
+                    }
+                } else {
+                    if (date.getDay() != 0 && date.getDay() < 4) {
+                        return returnMidDate(0, date)
+                    } else {
+                        return returnMidDate(1, date)
+                    }
+                }
+
+            }
+
+        }
+        function returnMidDate(type, date) {
+            console.log("here")
+            if (type == 0) {
+                var day = 21 - (date.getDay() + 3);
+                console.log(day + "/" + (date.getMonth() + 1) + "/" + date.getYear());
+                return (day + "/" + (date.getMonth() + 1) + "/" + date.getYear())
+            } else {
+                var day = 14 - (date.getDay() + 3) % 7;
+                console.log(day + "/" + (date.getMonth() + 1) + "/" + date.getYear());
+                return (day + "/" + (date.getMonth() + 1) + "/" + date.getYear())
+            }
+
+        }
+
+        function leapYear(year) {
+            return ((year % 4 == 0) && (year % 100 != 0)) || (year % 400 == 0);
+        }
+
+
+        returnMidWednesday(0, 2018)
+        returnMidWednesday(1, 2018)
+        returnMidWednesday(2, 2018)
+        returnMidWednesday(3, 2018)
+        returnMidWednesday(4, 2018)
+        returnMidWednesday(5, 2018)
+        returnMidWednesday(6, 2018)
+        returnMidWednesday(7, 2000)
+        returnMidWednesday(8, 2000)
+        returnMidWednesday(9, 2000)
+        returnMidWednesday(10, 2000)
+        returnMidWednesday(11, 2000)
+    </script>
+</head>
+
+</html>
